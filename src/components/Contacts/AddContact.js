@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import {addContact} from '../../Store';
 
 const AddContact = () => {
+    
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const handleSubmit = e => {
-        console.log(name, email, phone, "Clicked");
+    
+    const ids = require('short-id');
+    let history = useHistory();
+    
+    const createContact = (e) => {
         e.preventDefault();
+        const newContact = {
+            id: ids.generate(),
+            name: name,
+            email: email,
+            phone: phone
+        }
+        dispatch(addContact(newContact));
+        history.push("/");
     }
+
     return (
         <div className="card border-0 shadow">
             <div className="card-header">Add Contact</div>
             <div className="card-body">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={createContact}>
                     <div className="form-group">
                         <input
                             type="text"
