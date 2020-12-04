@@ -1,4 +1,4 @@
-import { CREATE_CONTACT, DELETE_CONTACT, GET_CONTACT, UPDATE_CONTACT } from "../Constant/Types"
+import { CLEAR_CONTACT, CREATE_CONTACT, DELETE_CONTACT, DELETE_SELECTED_CONTACT, GET_CONTACT, SELECT_CONTACT, UPDATE_CONTACT } from "../Constant/Types"
 
 //ADD A CONTACT
 export const addContact = (contact) => ({
@@ -22,4 +22,20 @@ export const updateContact = (contact) => ({
 export const deleteContact = (contact) => ({
     type: DELETE_CONTACT,
     payload: contact,
+});
+
+//SELECT ALL CONTACT
+export const selectAllContact = (id) => ({
+    type: SELECT_CONTACT,
+    payload: id,
+});
+
+//CLEAR SELECTED CONTACT
+export const clearAllContact = () => ({
+    type: CLEAR_CONTACT,
+});
+
+//DELETE SELECTED CONTACT
+export const deleteAllContact = () => ({
+    type: DELETE_SELECTED_CONTACT,
 });
