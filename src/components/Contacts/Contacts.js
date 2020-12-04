@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearAllContact, deleteAllContact, selectAllContact } from '../Actions/ContactActions';
+import { clearAllContact, deleteAllContact, selectAllContact } from '../Redux/Actions/ContactActions';
 import Contact from './Contact';
 
 function Contacts() {

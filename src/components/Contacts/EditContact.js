@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getContact, updateContact } from '../Actions/ContactActions';
+import { getContact, updateContact } from '../Redux/Actions/ContactActions';
 
 const EditContact = () => {
     const dispatch = useDispatch();

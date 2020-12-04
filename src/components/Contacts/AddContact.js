@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { addContact } from '../Actions/ContactActions';
+import { addContact } from '../Redux/Actions/ContactActions';
 
 const AddContact = () => {
     

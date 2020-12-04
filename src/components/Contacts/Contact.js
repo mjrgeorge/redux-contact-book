@@ -2,7 +2,7 @@ import React from 'react';
 import Avatar from 'react-avatar';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteContact } from '../Actions/ContactActions';
+import { deleteContact } from '../Redux/Actions/ContactActions';
 
 const Contact = ({ contact, selectAll }) => {
     const { name, phone, email, id } = contact;
