@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AddContact from './components/Contacts/AddContact';
 import Contacts from './components/Contacts/Contacts';
+import EditContact from './components/Contacts/EditContact';
 import Navbar from './components/Elements/Navbar';
 import store from './Store';
 import './styles/App.scss';
@@ -20,6 +21,9 @@ function App() {
                 </Route>
                 <Route exact path="/contact/add">
                   <AddContact />
+                </Route>
+                <Route exact path="/contact/edit/:id">
+                  <EditContact />
                 </Route>
               </Switch>
             </div>

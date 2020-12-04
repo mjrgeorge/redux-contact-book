@@ -1,35 +1,44 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { addContact } from '../Actions/ContactActions';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
+import { getContact, updateContact } from '../Actions/ContactActions';
 
-const AddContact = () => {
-    
+const EditContact = () => {
     const dispatch = useDispatch();
+    const contact = useSelector((state)=>state.contact.contact);
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+
+    const {id} = useParams();
     
-    const ids = require('short-id');
+    useEffect(() => { 
+        if(contact!=null){
+            setName(contact.name);
+            setEmail(contact.email);
+            setPhone(contact.phone);
+        }
+        dispatch(getContact(id))
+    }, [contact]);
+
     let history = useHistory();
-    
-    const createContact = (e) => {
+
+    const handleUpdateContact = (e)=>{
         e.preventDefault();
-        const newContact = {
-            id: ids.generate(),
+        const update_contact = Object.assign(contact, {
             name: name,
             email: email,
             phone: phone
-        }
-        dispatch(addContact(newContact));
-        history.push("/");
+        })
+        dispatch(updateContact(update_contact));
+        history.push('/');
     }
 
     return (
         <div className="card border-0 shadow">
             <div className="card-header">Add Contact</div>
             <div className="card-body">
-                <form onSubmit={createContact}>
+                <form onSubmit={handleUpdateContact}>
                     <div className="form-group">
                         <input
                             type="text"
@@ -57,11 +66,11 @@ const AddContact = () => {
                             onChange={(e) => setPhone(e.target.value)}
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">Create Contact</button>
+                    <button type="submit" className="btn btn-warning">Update Contact</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddContact;
+export default EditContact;
