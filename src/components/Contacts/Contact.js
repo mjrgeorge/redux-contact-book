@@ -11,7 +11,7 @@ const Contact = ({ contact, selectAll }) => {
         <tr>
             <th>
                 <div className="custom-control custom-checkbox">
-                    <input checked={selectAll} type="checkbox" className="custom-control-input" />
+                    <input defaultChecked={selectAll} type="checkbox" className="custom-control-input" />
                     <label className="custom-control-label"></label>
                 </div>
             </th>
